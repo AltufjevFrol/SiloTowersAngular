@@ -42,7 +42,7 @@ var TowerComponent = ng.core.Component({
     `],
 	template:  `<div [id]="ident" class="silo" (updateLevel)="update()" >
 		<div class="title">Уровень карналита в силосной башне №{{ident}}</div>
-		<div class="value">{{value}}%</div>
+		<div class="value" [style.border-color]="color">{{value}}%</div>
 		<div class="top section">
 			<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
 			 width="154px" height="105px">
@@ -119,6 +119,7 @@ var TowerComponent = ng.core.Component({
 	
 	this.value=50;
 	this.height='200px';
+	this.color='green'
 	}
 });
   TowerComponent.prototype.update = function(){
@@ -126,6 +127,13 @@ var TowerComponent = ng.core.Component({
   	let prop = getIndicator(this.ident);
   	this.value = prop.value;
   	this.height = 400*prop.value/100+'px';
+
+  	if(prop.value<prop.min || prop.value>prop.max){
+  		this.color = 'red';
+  	}else{
+  		this.color = 'green';
+  	}
+
   };
 
 
