@@ -40,8 +40,8 @@ var TowerComponent = ng.core.Component({
 			border-bottom: 5px solid green;
 		}
     `],
-	template:  `<div [id]="'silo'+id" class="silo" (updateLevel)="update()" >
-		<div class="title">Уровень карналита в силосной башне №{{id}}
+	template:  `<div [id]="ident" class="silo" (updateLevel)="update()" >
+		<div class="title">Уровень карналита в силосной башне №{{ident}}</div>
 		<div class="value">{{value}}%</div>
 		<div class="top section">
 			<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
@@ -109,19 +109,21 @@ var TowerComponent = ng.core.Component({
 			<div class="title">Масса карналита</div>
 		<div class="value">{{mass}}</div>
 		</div>
-	</div>`
+	</div>`,
+
+	
+	inputs : ['mass', 'ident'],
 	})
   .Class({
 	constructor: function() { 
-	this.id='1';
-	this.mass=1065;	
+	
 	this.value=50;
 	this.height='200px';
 	}
 });
   TowerComponent.prototype.update = function(){
   	
-  	let prop = getIndicator(this.id);
+  	let prop = getIndicator(this.ident);
   	this.value = prop.value;
   	this.height = 400*prop.value/100+'px';
   };

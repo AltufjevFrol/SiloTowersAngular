@@ -19,7 +19,7 @@ for(let i=1; i<=8; i++){
 setInterval(()=>{
 		let id = getRandomNum(1,8);
 		indicatorSet[id] = new Indicator(id);
-		let silo = document.getElementById(`silo1`)
+		let silo = document.getElementById(id)
 		silo.dispatchEvent(new CustomEvent('updateLevel'));
 	}, 500)
 
