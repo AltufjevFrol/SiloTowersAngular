@@ -37,7 +37,6 @@ var AppComponent = ng.core.Component({
   		this.mass7 = 856;
   		this.id8 = 8;
   		this.mass8 = 956;
-  		console.log(`id=${this.id2}`);
   	},
   });
 
